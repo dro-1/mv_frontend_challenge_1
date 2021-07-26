@@ -15,4 +15,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.
+Launches the test runner in the interactive watch mode.\
+You can also check the Actions Tab on GitHub to see the tests run on every commit.
