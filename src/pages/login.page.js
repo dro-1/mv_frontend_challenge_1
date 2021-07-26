@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+
+import { setUser } from './../redux/user/user.actions'
 
 const Container = styled.div`
   display: flex;
@@ -29,22 +33,32 @@ const Container = styled.div`
       border: solid 1px #ccc;
       border-radius: 2rem;
       color: #fff;
-      margin-bottom: 2rem;
+
       &::placeholder {
         color: rgba(255, 255, 255, 0.4);
       }
-      &:nth-child(3) {
-        margin-bottom: 4rem;
-      }
+
       &:focus {
         outline: none;
         border: solid 1px rgba(144, 256, 143, 0.5);
+      }
+    }
+    i {
+      color: white;
+      display: inline-block;
+      margin-left: 1rem;
+      &:nth-child(3) {
+        margin-bottom: 2rem;
+      }
+      &:nth-child(5) {
+        margin-bottom: 4rem;
       }
     }
     button {
       width: 100%;
       padding: 2rem;
       color: #1e1c24;
+      border: none;
       border-radius: 2rem;
       background-color: #fff;
       font-weight: bold;
@@ -56,7 +70,21 @@ const Container = styled.div`
   }
 `
 
-export const LoginPage = () => {
+const LoginPage = ({ setUser }) => {
+  const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
+  const history = useHistory()
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    if (password === 'password' && name.length > 0) {
+      setUser({
+        name,
+        balance: 0,
+      })
+    }
+  }
+
   return (
     <Container>
       <form>
@@ -64,10 +92,28 @@ export const LoginPage = () => {
           <h1>Let's sign you in.</h1>
           <h2>Welcome back. You've been missed.</h2>
         </header>
-        <input type="text" placeholder="Username" />
-        <input type="password" placeholder="Password" />
-        <button>Sign In</button>
+        <input
+          type="text"
+          value={name}
+          placeholder="Username"
+          onChange={({ target: { value } }) => setName(value)}
+        />
+        <i>Username must not be empty</i>
+        <input
+          type="password"
+          value={password}
+          onChange={({ target: { value } }) => setPassword(value)}
+          placeholder="Password"
+        />
+        <i>Password is password</i>
+        <button onClick={handleClick}>Sign In</button>
       </form>
     </Container>
   )
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  setUser: (user) => dispatch(setUser(user)),
+})
+
+export default connect(null, mapDispatchToProps)(LoginPage)
