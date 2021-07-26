@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 
 import { setUser } from './../redux/user/user.actions'
 
@@ -70,10 +69,9 @@ const Container = styled.div`
   }
 `
 
-const LoginPage = ({ setUser }) => {
+export const LoginPage = ({ setUser }) => {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
-  const history = useHistory()
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -95,6 +93,7 @@ const LoginPage = ({ setUser }) => {
         <input
           type="text"
           value={name}
+          id="name"
           placeholder="Username"
           onChange={({ target: { value } }) => setName(value)}
         />
@@ -102,11 +101,14 @@ const LoginPage = ({ setUser }) => {
         <input
           type="password"
           value={password}
+          id="password"
           onChange={({ target: { value } }) => setPassword(value)}
           placeholder="Password"
         />
         <i>Password is password</i>
-        <button onClick={handleClick}>Sign In</button>
+        <button id="login" onClick={handleClick}>
+          Sign In
+        </button>
       </form>
     </Container>
   )

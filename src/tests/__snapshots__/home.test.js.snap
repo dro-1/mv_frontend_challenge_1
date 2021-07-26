@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Page correctly renders Home Page 1`] = `
+<styled.div>
+  <Header />
+  <styled.main>
+    <p>
+      <span>
+        Your account balance is: 
+      </span>
+      <span>
+        $
+        5000
+      </span>
+    </p>
+    <input
+      id="amount"
+      onChange={[Function]}
+      placeholder="Amount"
+      type="number"
+      value="0"
+    />
+    <div
+      className="buttons"
+    >
+      <button
+        id="withdrawBtn"
+        onClick={[Function]}
+      >
+        Withdraw
+      </button>
+      <button
+        id="depositBtn"
+        onClick={[Function]}
+      >
+        Deposit
+      </button>
+    </div>
+  </styled.main>
+</styled.div>
+`;

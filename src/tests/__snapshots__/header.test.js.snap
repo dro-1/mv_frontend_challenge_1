@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component expect to render Header 1`] = `
+<styled.nav>
+  <header>
+    <h1>
+      Hi 
+      Seun
+    </h1>
+  </header>
+  <img
+    alt="profile"
+    src="https://cdn.pixabay.com/photo/2016/03/31/19/58/avatar-1295430_960_720.png"
+  />
+  <button>
+     Log Out
+  </button>
+</styled.nav>
+`;

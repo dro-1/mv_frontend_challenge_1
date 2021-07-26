@@ -88,6 +88,12 @@ export const HomePage = ({ logOut, name, balance, deposit, withdraw }) => {
 
   const handleWithdraw = (e) => {
     e.preventDefault()
+    if (amount < 0) {
+      setTimeout(() => {
+        setError('')
+      }, 2000)
+      return setError('Invalid Amount')
+    }
     if (balance - amount < 0) {
       setTimeout(() => {
         setError('')
@@ -103,6 +109,12 @@ export const HomePage = ({ logOut, name, balance, deposit, withdraw }) => {
 
   const handleDeposit = (e) => {
     e.preventDefault()
+    if (amount < 0) {
+      setTimeout(() => {
+        setError('')
+      }, 2000)
+      return setError('Invalid Amount')
+    }
     deposit(parseInt(amount))
     setTransactionMode('deposit')
     setTimeout(() => {
@@ -120,16 +132,21 @@ export const HomePage = ({ logOut, name, balance, deposit, withdraw }) => {
         </p>
         <input
           type="number"
+          id="amount"
           value={amount}
           onChange={({ target: { value } }) => setAmount(value)}
           placeholder="Amount"
         />
         <div className="buttons">
-          <button onClick={handleWithdraw}>Withdraw</button>
-          <button onClick={handleDeposit}>Deposit</button>
+          <button id="withdrawBtn" onClick={handleWithdraw}>
+            Withdraw
+          </button>
+          <button id="depositBtn" onClick={handleDeposit}>
+            Deposit
+          </button>
         </div>
 
-        {error && <p> Insufficient balance </p>}
+        {error && <p> {error} </p>}
         {transactionMade === 'deposit' && !error && (
           <p> You have deposited ${parseInt(amount)}</p>
         )}

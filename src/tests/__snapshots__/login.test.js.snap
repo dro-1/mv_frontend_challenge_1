@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Page correctly renders Login Page 1`] = `
+<styled.div>
+  <form>
+    <header>
+      <h1>
+        Let's sign you in.
+      </h1>
+      <h2>
+        Welcome back. You've been missed.
+      </h2>
+    </header>
+    <input
+      id="name"
+      onChange={[Function]}
+      placeholder="Username"
+      type="text"
+      value=""
+    />
+    <i>
+      Username must not be empty
+    </i>
+    <input
+      id="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+      value=""
+    />
+    <i>
+      Password is password
+    </i>
+    <button
+      id="login"
+      onClick={[Function]}
+    >
+      Sign In
+    </button>
+  </form>
+</styled.div>
+`;
